@@ -23,8 +23,8 @@ function init() {
     var f = Number(document.getElementById("f").value);
     var v1 = Number(document.getElementById("v1").value);
     var v2 = Number(document.getElementById("v2").value);
-    var p = Number( document.getElementById("p").value);
-    var i = Number( document.getElementById("i").value);
+    var p = Number(document.getElementById("p").value);
+    var i = Number(document.getElementById("i").value);
     var x1 = breakEvenLower(f, v1, i);
     var x2 = breakEvenUpper(f, v1, v2, p, i);
     var bx1 = round(checkBreakEven(f, v1, v2, p, i, x1));
@@ -34,20 +34,20 @@ function init() {
     if(bx1 == 1 && bx2 == 1) {
         pmp = p;
         mp = getSalesRevenue(i, pmp) - getTotalCosts(f, v1, v2, p, pmp);
-        document.getElementById("pmp").innerHTML = pmp;
-        document.getElementById("mp").innerHTML = mp;
+        document.getElementById("pmp").value = pmp;
+        document.getElementById("mp").value = mp;
     } else {
-       document.getElementById("pmp").innerHTML = "N/A";
-        document.getElementById("mp").innerHTML = "N/A"
+       document.getElementById("pmp").value = "N/A";
+        document.getElementById("mp").value = "N/A"
     }
     if(bx1 == 1) {
-        document.getElementById("xl").innerHTML = Math.ceil(x1) + " (" + x1 + ")";
+        document.getElementById("xl").value = Math.ceil(x1) + " (" + x1 + ")";
     } else {
-        document.getElementById("xl").innerHTML = "N/A";
+        document.getElementById("xl").value = "N/A";
     }
     if(bx2 == 1) {
-        document.getElementById("xu").innerHTML = Math.ceil(x2) + " (" + x2 + ")";
+        document.getElementById("xu").value = Math.ceil(x2) + " (" + x2 + ")";
     } else {
-        document.getElementById("xu").innerHTML = "N/A";
+        document.getElementById("xu").value = "N/A";
     }
 }

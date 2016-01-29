@@ -34,20 +34,20 @@ function init() {
     if(bx1 == 1 && bx2 == 1) {
         pmp = p;
         mp = getSalesRevenue(i, pmp) - getTotalCosts(f, v1, v2, p, pmp);
-        document.getElementById("pmp").value = pmp;
-        document.getElementById("mp").value = mp;
+        document.getElementById("pmp").innerHTML = pmp;
+        document.getElementById("mp").innerHTML = mp;
     } else {
-       document.getElementById("pmp").value = "N/A";
-        document.getElementById("mp").value = "N/A"
+       document.getElementById("pmp").innerHTML = "N/A";
+        document.getElementById("mp").innerHTML = "N/A"
     }
     if(bx1 == 1) {
-        document.getElementById("xl").value = Math.ceil(x1) + " (" + x1 + ")";
+        document.getElementById("xl").innerHTML = Math.ceil(x1) + " (" + x1 + ")";
     } else {
-        document.getElementById("xl").value = "N/A";
+        document.getElementById("xl").innerHTML = "N/A";
     }
     if(bx2 == 1) {
-        document.getElementById("xu").value = Math.ceil(x2) + " (" + x2 + ")";
+        document.getElementById("xu").innerHTML = Math.ceil(x2) + " (" + x2 + ")";
     } else {
-        document.getElementById("xu").value = "N/A";
+        document.getElementById("xu").innerHTML = "N/A";
     }
 }
