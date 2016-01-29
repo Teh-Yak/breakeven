@@ -65,10 +65,24 @@
 </form>
 <br>
 <div class="divider"></div>
-    Break even lower: <div id="xl"></div>
-    Break even upper: <div id="xu"></div>
-    Most Extreme Enclosed Output (two breakevens): <div id="pmp"></div>
-    Most Extreme Enclosed profit/loss (two breakevens): <div id="mp"></div>
+    <div class="row">
+        <div class="col s2 offset-2">
+            <input readonly type="text" id="xl">
+            <label for="xl">Lower BE Point</label>
+        </div>
+        <div class="col s2">
+            <input readonly type="text" id="xu">
+            <label for="xu">Upper BE Point</label>
+        </div>
+        <div class="col s2">
+            <input readonly type="text" id="pmp">
+            <label for="pmp">MEEO</label>
+        </div>
+        <div class="col s2">
+            <input readonly type="text" id="mp">
+            <label for="mp">MEEPL</label>
+        </div>
+    </form>
 </div>
 </body>
 </html>
