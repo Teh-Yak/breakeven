@@ -50,5 +50,4 @@ function init() {
     } else {
         document.getElementById("xu").innerHTML = "N/A";
     }
-    return false;
 }
