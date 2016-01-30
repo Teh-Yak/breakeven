@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <meta name="description" content="A small website that calculates break even points, taking into account (dis)economies of scale" />
 
-    <title>DESBEP - Dis(Economies) of Scale, and Break Even Points</title>
+    <title>DESBEP | Dis(Economies) of Scale, and Break Even Points</title>
     <script src="js/functions.js"></script>
     <!--Import Google Icon Font-->
     <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -33,11 +33,21 @@
 <nav>
     <div class="nav-wrapper">
         <a href="#" class="brand-logo center">DESBEP</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a href="#" data-activates="mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        <ul class="right hide-on-med-and-down">
             <li><a class="modal-trigger" href="#helpmodal">Help</a></li>
             <li><a class="modal-trigger" href="#bugsmodal">Bugs</a></li>
             <li><a class="modal-trigger" href="#changemodal">Changelog</a></li>
         </ul>
+        <ul class="side-nav" id="mobile">
+            <li><a class="modal-trigger" href="#helpmodal">Help</a></li>
+            <li><a class="modal-trigger" href="#bugsmodal">Bugs</a></li>
+            <li><a class="modal-trigger" href="#changemodal">Changelog</a></li>
+        </ul>
+    <li><a href="#!">First Sidebar Link</a></li>
+    <li><a href="#!">Second Sidebar Link</a></li>
+  </ul>
+  <a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
 </nav>
 </header>
@@ -45,30 +55,28 @@
 <div class="container grey lighten-4 z-depth-1">
 <form action="javascript:init()" name="">
     <div class="row">
-    <div class="col s2 offset-s3">
-    <input type="number" id="f" name="f" required min="0" value="50000" step="0.01">
+    <div class="col m2 offset-m3 s10 offset-s1">
+    <input type="number" id="f" name="f" required min="0" value="12000" step="0.01">
     <label for="f">Fixed costs</label>
     </div>
-    <div class="col s2">
+    <div class="col m2 offset-m0 s10 offset-s1">
     <input type="number" id="v1" name="v1" required min="0" value="100" step="0.01">
     <label for="v1">Variable costs 1</label>
     </div>
-    <div class="col s2">
+    <div class="col m2 offset-m0 s10 offset-s1">
     <input type="number" id="v2" name="v2" required min="0" value="120" step="0.01">
     <label for="v2">Variable costs 2</label>
     </div>
-    </div>
-    <div class="row">
-    <div class="col s2 offset-s4">
+    <div class="col m2 offset-m4 s10 offset-s1">
     <input type="number" id="p" name="p" required step="1" value="300">
     <label for="p">Point of change</label>
     </div>
-    <div class="col s2">
+    <div class="col m2 offset-m0 s10 offset-s1">
     <input type="number" id="i" name="i" required min="0" value="150" step="0.01">
     <label for="i">Selling price per unit</label>
     </div>
     </div>
-    <div class="row">
+    <div class="center-align">
     <div class="col s2 offset-s5">
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
         <i class="material-icons right">send</i>
@@ -79,19 +87,19 @@
 <br>
 <div class="divider"></div>
     <div class="row">
-        <div class="col s2 offset-s2">
+        <div class="col m2 offset-m2 s10 offset-s1">
             <input readonly type="text" id="xl">
             <label for="xl">Lower BE Point</label>
         </div>
-        <div class="col s2">
+        <div class="col m2 offset-m0 s10 offset-s1">
             <input readonly type="text" id="xu">
             <label for="xu">Upper BE Point</label>
         </div>
-        <div class="col s2">
+        <div class="col m2 offset-m0 s10 offset-s1">
             <input readonly type="text" id="pmp">
             <label for="pmp">MEEO</label>
         </div>
-        <div class="col s2">
+        <div class="col m2 offset-m0 s10 offset-s1">
             <input readonly type="text" id="mp">
             <label for="mp">MEEPL</label>
         </div>
@@ -121,22 +129,22 @@
     <div class="modal-content">
         <h4>Help</h4>
         <h5>Input</h5>
-        <p>Fixed costs - Costs that do not change based on production - this should be the total.</p>
-        <p>Variable costs 1 - the costs of production for producing the product (per product) before the specified amount of output is reached.</p>
-        <p>Variable costs 2 - the costs of production for producing the product (per product) after the specified amount of output is reached.</p>
-        <p>Point of change - the amount of output where variable costs switch from variable cost 1 to variable cost 2.</p>
-        <p>Selling price per unit - The selling price of the product/service per unit.</p>
-        <p>Submit - Really?</p>
-        <p>All inputs for monetary values can be in any currency - so long as it is consistent through all inputs.</p>
+        <p>Fixed costs | Costs that do not change based on production - this should be the total.</p>
+        <p>Variable costs 1 | the costs of production for producing the product (per product) before the specified amount of output is reached.</p>
+        <p>Variable costs 2 | the costs of production for producing the product (per product) after the specified amount of output is reached.</p>
+        <p>Point of change | the amount of output where variable costs switch from variable cost 1 to variable cost 2.</p>
+        <p>Selling price per unit | The selling price of the product/service per unit.</p>
+        <p>Submit | Really?</p>
+        <p>All inputs for monetary values can be in any currency, just make sure you use the same currency on all inputs.</p>
 
         <div class="divider"></div>
 
         <h5>Output</h5>
-        <p>Any output that produces 'N/A' is not an error - simply it is where two breakevens do not exist.</p>
-        <p>Lower BE Point - The (lower) amount of output that is needed to breakeven.</p>
-        <p>Upper BE Point - The (higher) amount of output that is needed to breakeven.</p>
-        <p>MEEO - The 'Most Extreme Enclosed Output' is only applicable for two breakevens, it tells you the output needed for the most extreme value in an enclosed area.</p>
-        <p>MEEPL - The 'Most Extreme Enclosed Profit/Loss' is only applicable for two breakevens, it tells you the highest profit/loss in an enclosed area. Positive values are the largest
+        <p>Any output that produces 'N/A' is not an error, it is where two breakevens do not exist for the input.</p>
+        <p>Lower BE Point | The (lower) amount of output that is needed to breakeven.</p>
+        <p>Upper BE Point | The (higher) amount of output that is needed to breakeven.</p>
+        <p>MEEO | The 'Most Extreme Enclosed Output' is only applicable for two breakevens, it tells you the output needed for the most extreme value in an enclosed area.</p>
+        <p>MEEPL | The 'Most Extreme Enclosed Profit/Loss' is only applicable for two breakevens, it tells you the highest profit/loss in an enclosed area. Positive values are the largest
         profit you can make, no matter what, whilst negatives are the largest loss you can make</p>
     </div>
     <div class="modal-footer">
@@ -159,10 +167,11 @@
 <div id="changemodal" class="modal modal-fixed-footer">
     <div class="modal-content">
         <h4>Changelog</h4>
-        <p>1.1.2 - Minor changes related to legal text etc</p>
-        <p>1.1.1 - Minor UI changes</p>
-        <p>1.1.0 - Added beautiful stuff using Materialize.css</p>
-        <p>1.0.0 - Initial code, nothing beautiful</p>
+        <p>1.2.0 | Mobile devices properly supported now!</p>
+        <p>1.1.2 | Minor changes related to legal text etc</p>
+        <p>1.1.1 | Minor UI changes</p>
+        <p>1.1.0 | Added beautiful stuff using Materialize.css</p>
+        <p>1.0.0 | Initial code, nothing beautiful</p>
     </div>
     <div class="modal-footer">
         <a href="#!" class=" modal-action modal-close waves-effect waves-blue btn-flat">Close</a>
