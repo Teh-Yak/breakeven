@@ -1,6 +1,10 @@
 /**
  * Created by Harry on 28-Jan-16.
  */
+//Desmos
+var calculator;
+//Main code
+
 function round(num) {
     return Math.round(num*1000000)/1000000
 }
@@ -50,4 +54,24 @@ function init() {
     } else {
         document.getElementById("xu").value = "N/A";
     }
+
+    //Do desmos things here
+    calculator.setExpression({id: "fixed", latex: "f="+f});
+    calculator.setExpression({id: "var1", latex: "v="+v1});
+    calculator.setExpression({id: "var2", latex: "w="+v2});
+    calculator.setExpression({id: "point", latex: "p="+p});
+    calculator.setExpression({id: "income", latex: "i="+i});
+    calculator.setExpression({id: "costs", latex: "g(x)=f+vx+(1/2)(w-v)(x+abs(x-p)-p)", color: "#ff0000"});
+    calculator.setExpression({id: "revenue", latex: "h(x)=ix", color: "#00ff00"});
+    calculator.setExpression({id: "nshade", latex: "g(x)>y>h(x)", color: "#ff0000"});
+    calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
+$(document).ready(function(){
+    calculator = Desmos.Calculator(document.getElementById('graph'), {keypad: false, expressionsCollapsed: true, settingsMenu: false, solutions: true});
+    calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
+    calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
+    init();
+});
+$(document).on("change",".update", function() {
+    init();
+});
