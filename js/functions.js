@@ -2,7 +2,7 @@
  * Created by Harry on 28-Jan-16.
  */
 //Desmos variable
-//var calculator;
+var calculator;
 
 //Main code
 function round(num) {
@@ -37,10 +37,16 @@ function init() {
     }
     //Start calculation
     var total = 0;
+    var str = "g(x)=f+v_0x";
     for(var j=0; j < all.length; j++) {
+        calculator.setExpression({id: "v"+j, latex: "v_"+j+"="+all[j][0]});
         if(j!=0) {
             total += all[j-1][0]*all[j][1];
             total -= all[j][0]*all[j][1];
+            calculator.setExpression({id: "p"+j, latex: "p_"+j+"="+all[j][1]});
+            str += "+(1/2)(v_"+j+"-v_"+(j-1)+")(x+abs(x-p_"+j+")-p_"+j+")";
+        } else {
+
         }
         var _t = breakEven(f, total, all[j][0], i);
         var _t2 = (f/(i*_t)) + (all[0][0]/i);
@@ -53,30 +59,21 @@ function init() {
             document.getElementById("ib"+j).value = "N/A";
         }
     }
-    //Do desmos things here
-
-    /*
     calculator.setExpression({id: "fixed", latex: "f="+f});
-    calculator.setExpression({id: "var1", latex: "v="+v1});
-    calculator.setExpression({id: "var2", latex: "w="+v2});
-    calculator.setExpression({id: "point", latex: "p="+p});
     calculator.setExpression({id: "income", latex: "i="+i});
-    calculator.setExpression({id: "costs", latex: "g(x)=f+vx+(1/2)(w-v)(x+abs(x-p)-p)", color: "#ff0000"});
+    calculator.setExpression({id: "costs", latex: str, color: "#ff0000"});
     calculator.setExpression({id: "revenue", latex: "h(x)=ix", color: "#00ff00"});
-    calculator.setExpression({id: "nshade", latex: "g(x)>y>h(x)", color: "#ff0000"});
-    calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
-    */
+    //calculator.setExpression({id: "nshade", latex: "g(x)>y>h(x)", color: "#ff0000"});
+    //calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
 $(document).ready(function(){
     //Init materialize stuff
     $('.modal-trigger').leanModal();
     $(".button-collapse").sideNav();
     //Desmos & main code
-    /*
     calculator = Desmos.Calculator(document.getElementById('graph'), {keypad: false, expressionsCollapsed: true, settingsMenu: false, solutions: true});
     calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
     calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
-    */
     init();
 });
 $(document).on("change",".update", function() {
@@ -101,7 +98,7 @@ $(function(){
 //Code for adding/removing elements
 var current = 1;
 function addVar() {
-    $('#variable').append('<div id="v'+current+'"><div class="col m3 offset-m3 s5 offset-s1"><input type="number" id="iv'+current+'" name="iv'+current+'" required min="0" value="150" step="0.01" class="update"><label for="i">Variable cost '+(current+1)+'</label></div><div class="col m3 s5"><input type="number" id="ip'+current+'" name="ip'+current+'" required min="0" value="150" step="0.01" class="update"><label for="i">Point of change '+(current)+'</label.</div><div class="col offset-m3 offset-s1"></div></div>');
+    $('#variable').append('<div id="v'+current+'"><div class="col m3 offset-m3 s5 offset-s1"><input type="number" id="iv'+current+'" name="iv'+current+'" required min="0" value="'+((current+1)*10)+'" step="0.01" class="update"><label for="i">Variable cost '+(current+1)+'</label></div><div class="col m3 s5"><input type="number" id="ip'+current+'" name="ip'+current+'" required min="0" value="'+(current*150)+'" step="0.01" class="update"><label for="i">Point of change '+(current)+'</label.</div><div class="col offset-m3 offset-s1"></div></div>');
     $('#output').append('<div class="col m3 s12" id="b'+current+'"><input readonly type="text" id="ib'+current+'" value="N/A"><label for="ib'+current+'">Break Even Point '+(current+1)+'</label></div>');
     current++;
     init();
