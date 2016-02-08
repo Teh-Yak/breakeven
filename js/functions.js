@@ -1,6 +1,6 @@
 /**
- * Created by Harry on 28-Jan-16.
- */
+* Created by Harry on 28-Jan-16.
+*/
 //Desmos variable
 var calculator;
 
@@ -20,11 +20,13 @@ function getSalesRevenue(i, x) {
 function getTotalCosts(f, v1, v2, p, x) {
     return f+(v1*x)+((1/2)*(v2-v1)*(x+Math.abs(x-p)-p));
 }
-function init() {
+
+//Add param to sort out colours - Yak
+function init(colours) {
     //Get static fields
     var f = Number(document.getElementById("f").value);
     var i = Number(document.getElementById("i").value);
-
+	
     //Get all elements
     var general = document.getElementById("variable").childNodes;
     var all = [];
@@ -61,8 +63,10 @@ function init() {
     }
     calculator.setExpression({id: "fixed", latex: "f="+f});
     calculator.setExpression({id: "income", latex: "i="+i});
-    calculator.setExpression({id: "costs", latex: str, color: "#ff0000"});
-    calculator.setExpression({id: "revenue", latex: "h(x)=ix", color: "#00ff00"});
+    calculator.setExpression({id: "costs", latex: str, color: colours[0]});
+    calculator.setExpression({id: "revenue", latex: "h(x)=ix", color: colours[1]});
+	//calculator.setExpression({id: "costs", latex: str, color: "#ff0000"});
+    //calculator.setExpression({id: "revenue", latex: "h(x)=ix", color: "#00ff00"});
     //calculator.setExpression({id: "nshade", latex: "g(x)>y>h(x)", color: "#ff0000"});
     //calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
@@ -74,11 +78,14 @@ $(document).ready(function(){
     calculator = Desmos.Calculator(document.getElementById('graph'), {keypad: false, expressionsCollapsed: true, settingsMenu: false, solutions: true});
     calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
     calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
-    init();
+    init(colorHandling);
 });
+
 $(document).on("change",".update", function() {
-    init();
+	init(colorHandling);
 });
+
+
 
 //Smooth scroll
 $(function(){
@@ -111,3 +118,35 @@ function delVar() {
         init();
     }
 }
+
+
+/**
+ * Yaks code starts here
+ */
+//colours array, 
+//0 and 1 are used for graph lines
+var colorHandling=["#FF0000","#00FF00"];
+
+//updates the colours array
+function updateColors(){
+	var s=document.getElementById("costscolor").value;
+	var c=document.getElementById("salesColor").value;
+	colorHandling=[s,c]
+}
+ 
+ /* update the graph hieght*/
+function updateGraph(){
+	var height = Number(document.getElementById("graphHeight").value);
+	document.getElementById("graph").style.height=height+"px";
+	calculator.resize();
+}
+
+/*when the graph height is updated...*/
+$(document).on("change",".updateGraph", function() {
+    updateGraph();	
+});
+/*when the graph colours is updated...*/
+$(document).on("change",".updateC", function() {
+	updateColors();
+	init(colorHandling);
+});
