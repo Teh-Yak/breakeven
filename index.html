@@ -31,7 +31,7 @@
         <ul class="side-nav" id="mobile">
             <li><a href="javascript:addVar();">Add</a></li>
             <li><a href="javascript:delVar();">Remove</a></li>
-            <li><a class="modal-trigger" href="#helpmodal">Help</a></li>
+			<li><a class="modal-trigger" href="#helpmodal">Help</a></li>
             <li><a class="modal-trigger" href="#bugsmodal">Bugs</a></li>
             <li><a class="modal-trigger" href="#changemodal">Changelog</a></li>
         </ul>
@@ -42,19 +42,6 @@
 <main class="valign-wrapper">
 <div class="container grey lighten-4 z-depth-1 hoverable">
 <!-- Yaks code starts here until the end point comment. Copyright Jack Stevenson, licensed under the project license (@teh_yak_ on twitter)-->
-<!--<div class="divider"></div>
-	<div id="cookie" class="row">
-	<div class="col m2">
-	<img class="responsive-img" src="images/cookie.png">
-	</div>
-	<div class="col m8">
-	<p> This site uses cookies to enhance the user experiance. If the button is clicked in, then cookies are enabled. We only use cookies for remembering user preferances</p>
-	</div>
-	<div class="col m2">
-	<img src="images/off.png" alt="Button Out" title="Button In" onClick="enableCookies(this)" class="responsive-img">
-	</div>
-	</div>
-<div class="divider"></div>-->
 	<form action="javascript:void(0)">
 		<div id="graphSettings" class="row">
 			<div class="row">
@@ -72,11 +59,17 @@
 					<input type="color" id="salesColor" name="salesColor" value="#00FF00"  class="updateC">
 					<label for="salesColor">Color of Sales</label>
 				</div>
-			</div>			
+			</div>
+			<div class="row">
+				<input type="button" id="cookies" name="cookies">
+				<label for="cookies" id="enableCooks" onclick="enable()">Enable Cookies?</label>
+			</div>
 		</div>
 	</form>
 <div class="divider"></div>
 <!-- Yaks code ends here.-->
+
+
 <form action="javascript:void(0);" name="">
     <div class="center-align"><h5 class="blue-grey-text text-darken-3">Variables</h5></div>
     <div class="row">
@@ -199,6 +192,9 @@
         <a href="#!" class=" modal-action modal-close waves-effect waves-blue btn-flat">Close</a>
     </div>
 </div>
+
+
+
 
 <!--JS imports-->
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

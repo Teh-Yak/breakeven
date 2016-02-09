@@ -79,6 +79,12 @@ $(document).ready(function(){
     calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
     calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
     init(colorHandling);
+	//TODO add handling to check if cookie if enabled by an undefined cookie.
+	//document.cookie="colors="+colorHandling+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
+	if(document.cookie!=="undefined"){
+		var s = document.cookie;
+		
+	}
 });
 
 $(document).on("change",".update", function() {
@@ -145,8 +151,24 @@ function updateGraph(){
 $(document).on("change",".updateGraph", function() {
     updateGraph();	
 });
+
 /*when the graph colours is updated...*/
 $(document).on("change",".updateC", function() {
 	updateColors();
 	init(colorHandling);
 });
+
+/* Cookie Handling*/
+var cookiesEnabled = false;
+
+function enable(){
+	if(cookiesEnabled){
+		cookiesEnabled=false;
+	}
+	else{
+		cookiesEnabled=true;
+		document.cookie="colorSales="+colorHandling[1]+";"+"colorCosts="+colorHandling[0]+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
+		console.log(document.cookie);
+	}
+		
+}
