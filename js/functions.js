@@ -89,6 +89,7 @@ $(document).ready(function(){
 			console.log(activeCookie);
 		}	
 	}
+	console.log(document.cookie[0].value);
 });
 
 $(document).on("change",".update", function() {
@@ -178,6 +179,6 @@ function enable(){
 }
 
 function setColor(){
-	console.log(document.cookie[0].value);
+	
 	return document.cookie[0].value;
 }
