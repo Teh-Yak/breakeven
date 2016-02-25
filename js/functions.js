@@ -178,5 +178,5 @@ function enable(){
 }
 
 function setColor(){
-	document.cookie[0];
+	document.cookie[0].value;
 }
