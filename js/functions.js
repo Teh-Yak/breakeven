@@ -178,5 +178,6 @@ function enable(){
 }
 
 function setColor(){
-	document.cookie[0].value;
+	console.log(document.cookie[0].value);
+	return document.cookie[0].value;
 }
