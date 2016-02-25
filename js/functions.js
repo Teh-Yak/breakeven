@@ -85,11 +85,10 @@ $(document).ready(function(){
 		var cA=document.cookie.split(';');
 		for(i=0;i<cA.length;i++){
 			var activeCookie = cA[i];
-			//if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
+			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
 			console.log(activeCookie);
 		}	
 	}
-	console.log(document.cookie[0].value);
 });
 
 $(document).on("change",".update", function() {
@@ -178,7 +177,6 @@ function enable(){
 		
 }
 
-function setColor(){
-	
-	return document.cookie[0].value;
+function setValue(value){
+	return value;
 }
