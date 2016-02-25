@@ -83,7 +83,7 @@ $(document).ready(function(){
 	//document.cookie="colors="+colorHandling+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
 	if(document.cookie!=="undefined"){
 		var s = document.cookie;
-		
+		console.log(s);
 	}
 });
 
