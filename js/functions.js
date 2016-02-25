@@ -82,8 +82,12 @@ $(document).ready(function(){
 	//TODO add handling to check if cookie if enabled by an undefined cookie.
 	//document.cookie="colors="+colorHandling+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
 	if(document.cookie!=="undefined"){
-		var s = document.cookie;
-		console.log(s);
+		var cA=document.cookie.split(';');
+		var lA = [];
+		for(i=0;i<cA.length;i++){
+			var activeCookie = cA[i];
+			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
+			console.log(activeCookie);
 	}
 });
 
