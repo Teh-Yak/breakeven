@@ -176,3 +176,8 @@ function enable(){
 	}
 		
 }
+
+function setColor(){
+	document.cookie[0];
+}
+}
