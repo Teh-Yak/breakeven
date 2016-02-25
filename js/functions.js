@@ -88,6 +88,7 @@ $(document).ready(function(){
 			var activeCookie = cA[i];
 			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
 			console.log(activeCookie);
+		}	
 	}
 });
 
