@@ -71,6 +71,14 @@ function init(colours) {
     //calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
 $(document).ready(function(){
+    if(document.cookie!=="undefined"){
+		var cA=document.cookie.split(';');
+		for(i=0;i<cA.length;i++){
+			var activeCookie = cA[i];
+			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
+			console.log(activeCookie);
+		}	
+	}
     //Init materialize stuff
     $('.modal-trigger').leanModal();
     $(".button-collapse").sideNav();
@@ -81,14 +89,7 @@ $(document).ready(function(){
     init(colorHandling);
 	//TODO add handling to check if cookie if enabled by an undefined cookie.
 	//document.cookie="colors="+colorHandling+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
-	if(document.cookie!=="undefined"){
-		var cA=document.cookie.split(';');
-		for(i=0;i<cA.length;i++){
-			var activeCookie = cA[i];
-			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
-			console.log(activeCookie);
-		}	
-	}
+	
 });
 
 $(document).on("change",".update", function() {
