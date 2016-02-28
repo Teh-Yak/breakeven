@@ -187,5 +187,6 @@ function setValue(value){
 }
 
 function setColor(){
-	return cookieArray[0];
+	return "#00FFFF";
+	//return cookieArray[0];
 }
