@@ -77,7 +77,7 @@ $(document).ready(function(){
 			var activeCookie = cA[i];
 			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
 			console.log(activeCookie);
-			cookieArray.push(activeCookie.value);
+			cookieArray.push(activeCookie);
 			console.log(cookieArray[i]);
 			
 		}	
@@ -176,14 +176,10 @@ function enable(){
 	}
 	else{
 		cookiesEnabled=true;
-		document.cookie="colorSales="+colorHandling[1]+";"+"colorCosts="+colorHandling[0]+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
+		document.cookie="colorSales="+colorHandling[1]+"; "+"colorCosts="+colorHandling[0]+"; "+"height="+Number(document.getElementById('graphHeight').value)+"; ";
 		console.log(document.cookie);
 	}
 		
-}
-
-function setValue(value){
-	return value;
 }
 
 function setColor(){
