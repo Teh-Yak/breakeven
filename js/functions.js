@@ -76,7 +76,6 @@ $(document).ready(function(){
 		for(i=0;i<cA.length;i++){
 			var activeCookie = cA[i];
 			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
-			console.log(activeCookie);
 			cookieArray.push(activeCookie);
 			console.log(cookieArray[i]);
 			
