@@ -78,6 +78,8 @@ $(document).ready(function(){
 			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
 			console.log(activeCookie);
 			cookieArray.push(activeCookie.value);
+			console.log(cookieArray[i]);
+			
 		}	
 	}
     //Init materialize stuff
