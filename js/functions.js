@@ -176,7 +176,9 @@ function enable(){
 	}
 	else{
 		cookiesEnabled=true;
-		document.cookie="colorSales="+colorHandling[1]+"; "+"colorCosts="+colorHandling[0]+"; "+"height="+Number(document.getElementById('graphHeight').value)+"; ";
+		document.cookie+="colorSales="+colorHandling[1]+"; ";
+		document.cookie+="colorCosts="+colorHandling[0]+"; ";
+		document.cookie+="height="+Number(document.getElementById('graphHeight').value)+"; ";
 		console.log(document.cookie);
 	}
 		
