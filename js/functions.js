@@ -77,6 +77,7 @@ $(document).ready(function(){
 			var activeCookie = cA[i];
 			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
 			console.log(activeCookie);
+			cookieArray.push(activeCookie.value);
 		}	
 	}
     //Init materialize stuff
@@ -137,6 +138,7 @@ function delVar() {
 //colours array, 
 //0 and 1 are used for graph lines
 var colorHandling=["#FF0000","#00FF00"];
+var cookieArray=[];
 
 //updates the colours array
 function updateColors(){
@@ -180,4 +182,8 @@ function enable(){
 
 function setValue(value){
 	return value;
+}
+
+function setColor(){
+	return cookieArray[0];
 }
