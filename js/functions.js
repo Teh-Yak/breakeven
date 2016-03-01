@@ -71,10 +71,7 @@ function init(colours) {
     //calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
 $(document).ready(function(){
-	alert("This webpage can use cookies to store information on the preferences of the graph. "+
-	"This is highly experimental, subject to change but will not impact the main functioning of the page." +
-	"If you do not wish to use cookies do not click the button which is labelled 'Enable cookies'."
-	"Thank you for your patience."
+	alert("This webpage can use cookies to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience."
 	);
 	
     if(document.cookie!=="undefined"){
