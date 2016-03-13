@@ -11,6 +11,9 @@
     <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css"  media="screen,projection"/>
     <link type="text/css" rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+    <script type="text/javascript" src="js/functions.js"></script>
 </head>
 <body>
 <header>
@@ -56,14 +59,14 @@
 					<label for="costscolor">Color of Costs</label>
 				</div>
 				<div class="col m3 offset-m0 s10 offset-s1">
-					<input type="color" id="salesColor" name="salesColor" value="#00FF00"  class="updateC">
+					<input type="color" id="salesColor" name="salesColor" value="setColor()"  class="updateC">
 					<label for="salesColor">Color of Sales</label>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col m3 offset-m3 s10 offset-s1">
-					<input type="button" id="cookies" name="cookies">
-					<label for="cookies" id="enableCooks" onclick="enable()">Enable Cookies?</label>
+					<input type="button" id="cookies" name="cookies" onclick="enable()">
+					<label for="cookies" id="enableCooks">Enable Cookies?</label>
 				</div>
 			</div>
 		</div>
@@ -199,9 +202,8 @@
 
 
 <!--JS imports-->
-<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
+
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/latest/plugins/ScrollToPlugin.min.js"></script>
 <script src="https://www.desmos.com/api/v0.6/calculator.js?apiKey=b88927985e064453ab206bac398da46f"></script>

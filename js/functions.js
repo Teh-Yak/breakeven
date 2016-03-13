@@ -71,6 +71,19 @@ function init(colours) {
     //calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
 $(document).ready(function(){
+	alert("This webpage can use cookies to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience."
+	);
+	
+    if(document.cookie!=="undefined"){
+		var cA=document.cookie.split(';');
+		for(i=0;i<cA.length;i++){
+			var activeCookie = cA[i];
+			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
+			cookieArray.push(activeCookie);
+			console.log(cookieArray[i]);
+			
+		}	
+	}
     //Init materialize stuff
     $('.modal-trigger').leanModal();
     $(".button-collapse").sideNav();
@@ -81,10 +94,7 @@ $(document).ready(function(){
     init(colorHandling);
 	//TODO add handling to check if cookie if enabled by an undefined cookie.
 	//document.cookie="colors="+colorHandling+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
-	if(document.cookie!=="undefined"){
-		var s = document.cookie;
-		
-	}
+	
 });
 
 $(document).on("change",".update", function() {
@@ -132,6 +142,7 @@ function delVar() {
 //colours array, 
 //0 and 1 are used for graph lines
 var colorHandling=["#FF0000","#00FF00"];
+var cookieArray=[];
 
 //updates the colours array
 function updateColors(){
@@ -167,8 +178,15 @@ function enable(){
 	}
 	else{
 		cookiesEnabled=true;
-		document.cookie="colorSales="+colorHandling[1]+";"+"colorCosts="+colorHandling[0]+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
+		document.cookie+="colorSales="+colorHandling[1]+"; ";
+		document.cookie+="colorCosts="+colorHandling[0]+"; ";
+		document.cookie+="height="+Number(document.getElementById('graphHeight').value)+"; ";
 		console.log(document.cookie);
 	}
 		
+}
+
+function setColor(){
+	return "#00FFFF";
+	//return cookieArray[0];
 }
