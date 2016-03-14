@@ -81,13 +81,7 @@ $(document).ready(function(){
 		colorHandling[1]=localStorage.getItem("salesColor");
 		height=localStorage.getItem("graphHeight");
 	}
-	if(colorHandling[0]==null){
-		colorHandling[0]="#FF0000"
-	}
-	if(colorHandling[1]==null){
-		colorHandling[1]="#00FF00"
-	}
-	setColor();
+	setValues();
     	//Init materialize stuff
     	$('.modal-trigger').leanModal();
     	$(".button-collapse").sideNav();
@@ -126,14 +120,14 @@ function addVar() {
     $('#variable').append('<div id="v'+current+'"><div class="col m3 offset-m3 s5 offset-s1"><input type="number" id="iv'+current+'" name="iv'+current+'" required min="0" value="'+((current+1)*10)+'" step="0.01" class="update"><label for="i">Variable cost '+(current+1)+'</label></div><div class="col m3 s5"><input type="number" id="ip'+current+'" name="ip'+current+'" required min="0" value="'+(current*150)+'" step="0.01" class="update"><label for="i">Point of change '+(current)+'</label.</div><div class="col offset-m3 offset-s1"></div></div>');
     $('#output').append('<div class="col m3 s12" id="b'+current+'"><input readonly type="text" id="ib'+current+'" value="N/A"><label for="ib'+current+'">Break Even Point '+(current+1)+'</label></div>');
     current++;
-    init();
+    init(colorHandling);
 }
 function delVar() {
     if(current > 1) {
         current--;
         document.getElementById("variable").removeChild(document.getElementById("v"+current));
         document.getElementById("output").removeChild(document.getElementById("b"+current));
-        init();
+        init(colorHandling);
     }
 }
 
@@ -191,11 +185,17 @@ function enable(){
 	}
 }
 
-function setColor(){
+function setValues(){
+	if(colorHandling[0]==null){
+		colorHandling[0]="#FF0000";
+	}
+	if(colorHandling[1]==null){
+		colorHandling[1]="#00FF00";
+	}
+	if(height==null){
+		height="200";
+	}
 	document.getElementById("costscolor").value=colorHandling[0];
 	document.getElementById("salesColor").value=colorHandling[1];
+	document.getElementById("graphHeight").value=height;
 }
-
-
-
-
