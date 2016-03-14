@@ -76,8 +76,7 @@ function init(colours) {
 $(document).ready(function(){
 	alert("This webpage can use cookies to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience."
 	);
-	setColor(0);
-	setColor(1);
+	setColor();
     if(document.cookie!=="undefined"){
 		var cA=document.cookie.split(';');
 		for(i=0;i<cA.length;i++){
@@ -147,6 +146,7 @@ function delVar() {
 //0 and 1 are used for graph lines
 var colorHandling=["#FF0000","#00FF00"];
 var cookieArray=[];
+var cookiesEnabled = false;
 
 //updates the colours array
 function updateColors(){
@@ -174,7 +174,6 @@ $(document).on("change",".updateC", function() {
 });
 
 /* Cookie Handling*/
-var cookiesEnabled = false;
 
 function enable(){
 	if(cookiesEnabled){
@@ -191,7 +190,7 @@ function enable(){
 	console.log(document.cookie);	
 }
 
-function setColor(index){
-	console.log(colorHandling[index]);
-	return colorHandling[index];
+function setColor(){
+	document.getElementById("costscolor").value=colorHandling[0];
+	document.getElementById("salesColor").value=colorHandling[0];
 }
