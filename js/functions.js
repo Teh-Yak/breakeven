@@ -178,17 +178,19 @@ var cookiesEnabled = false;
 function enable(){
 	if(cookiesEnabled){
 		cookiesEnabled=false;
+		document.cookie=null;
 	}
 	else{
 		cookiesEnabled=true;
 		document.cookie=document.cookie+"colorSales="+colorHandling[1]+"; ";
 		document.cookie=document.cookie+"colorCosts="+colorHandling[0]+"; ";
 		document.cookie=document.cookie+"height="+Number(document.getElementById('graphHeight').value)+"; ";
-		console.log(document.cookie);
-	}
 		
+	}
+	console.log(document.cookie);	
 }
 
 function setColor(index){
+	console.log(colorHandling[index]);
 	return colorHandling[index];
 }
