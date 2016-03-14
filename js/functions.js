@@ -75,26 +75,20 @@ function init(colours) {
 }
 $(document).ready(function(){
 	setColor();
-	alert("This webpage can use cookies to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience.");
-	
-    if(document.cookie!=="undefined"){
-		var cA=document.cookie.split(';');
-		for(i=0;i<cA.length;i++){
-			var activeCookie = cA[i];
-			if(activeCookie.charAt(0)==' '){ activeCookie=activeCookie.substring(1);}
-			cookieArray.push(activeCookie);
-			console.log(cookieArray[i]);
-			
-		}	
+	alert("This webpage can use cookies/local storage to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience.");
+	if(typeof "Storage" !== "undefined"){
+		colorHandling[0]=localStorage.getItem("costscolor");
+		colorHandling[1]=localStorage.getItem("salescolor");
+		height=localStorage.getItem("graphHeight");
 	}
-    //Init materialize stuff
-    $('.modal-trigger').leanModal();
-    $(".button-collapse").sideNav();
-    //Desmos & main code
-    calculator = Desmos.Calculator(document.getElementById('graph'), {keypad: false, expressionsCollapsed: true, settingsMenu: false, solutions: true});
-    calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
-    calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
-    init(colorHandling);
+    	//Init materialize stuff
+    	$('.modal-trigger').leanModal();
+    	$(".button-collapse").sideNav();
+    	//Desmos & main code
+    	calculator = Desmos.Calculator(document.getElementById('graph'), {keypad: false, expressionsCollapsed: true, settingsMenu: false, solutions: true});
+    	calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
+    	calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
+    	init(colorHandling);
 	//TODO add handling to check if cookie if enabled by an undefined cookie.
 	//document.cookie="colors="+colorHandling+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
 	
@@ -145,8 +139,8 @@ function delVar() {
 //colours array, 
 //0 and 1 are used for graph lines
 var colorHandling=["#FF0000","#00FF00"];
-var cookieArray=[];
 var cookiesEnabled = false;
+var height=200;
 
 //updates the colours array
 function updateColors(){
@@ -157,7 +151,7 @@ function updateColors(){
  
  /* update the graph hieght*/
 function updateGraph(){
-	var height = Number(document.getElementById("graphHeight").value);
+	height = Number(document.getElementById("graphHeight").value);
 	document.getElementById("graph").style.height=height+"px";
 	calculator.resize();
 }
@@ -177,17 +171,18 @@ $(document).on("change",".updateC", function() {
 
 function enable(){
 	if(cookiesEnabled){
+		if(typeof "Storage" !== "undefined"){
+			localStorage.clear();
+		}
 		cookiesEnabled=false;
-		document.cookie=null;
 	}
 	else{
-		cookiesEnabled=true;
-		document.cookie=document.cookie+"colorSales="+colorHandling[1]+"; ";
-		document.cookie=document.cookie+"colorCosts="+colorHandling[0]+"; ";
-		document.cookie=document.cookie+"height="+Number(document.getElementById('graphHeight').value)+"; ";
-		
+		if(typeof "Storage" !== "undefined"){
+			localStorage.setItem("costscolor", document.getElementById("costscolor").value);
+			localStorage.setItem("salescolor", document.getElementById("salescolor").value);
+			localStorage.setItem("graphHeight", document.getElementById("graphHeight").value);
+		}
 	}
-	console.log(document.cookie);	
 }
 
 function setColor(){
