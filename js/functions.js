@@ -184,6 +184,7 @@ function enable(){
 			localStorage.setItem("graphHeight", document.getElementById("graphHeight").value);
 			console.log(localStorage);
 		}
+		cookiesEnabled=true;
 	}
 }
 
