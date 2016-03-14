@@ -74,7 +74,7 @@ function init(colours) {
     //calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
 $(document).ready(function(){
-	setColor();
+	
 	alert("This webpage can use cookies/local storage to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience.");
 	if(typeof "Storage" !== "undefined"){
 		console.log(localStorage);
@@ -83,6 +83,7 @@ $(document).ready(function(){
 		height=localStorage.getItem("graphHeight");
 		console.log(colorHandling);
 	}
+	setColor();
     	//Init materialize stuff
     	$('.modal-trigger').leanModal();
     	$(".button-collapse").sideNav();
@@ -91,9 +92,7 @@ $(document).ready(function(){
     	calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
     	calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
     	init(colorHandling);
-	//TODO add handling to check if cookie if enabled by an undefined cookie.
-	//document.cookie="colors="+colorHandling+";"+"height="+Number(document.getElementById('graphHeight').value)+";";
-	
+
 });
 
 $(document).on("change",".update", function() {
@@ -193,3 +192,5 @@ function setColor(){
 	document.getElementById("costscolor").value=colorHandling[0];
 	document.getElementById("salesColor").value=colorHandling[1];
 }
+
+
