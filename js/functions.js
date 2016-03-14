@@ -181,15 +181,14 @@ function enable(){
 	}
 	else{
 		cookiesEnabled=true;
-		document.cookie+="colorSales="+colorHandling[1]+"; ";
-		document.cookie+="colorCosts="+colorHandling[0]+"; ";
-		document.cookie+="height="+Number(document.getElementById('graphHeight').value)+"; ";
+		document.cookie=document.cookie+"colorSales="+colorHandling[1]+"; ";
+		document.cookie=document.cookie+"colorCosts="+colorHandling[0]+"; ";
+		document.cookie=document.cookie+"height="+Number(document.getElementById('graphHeight').value)+"; ";
 		console.log(document.cookie);
 	}
 		
 }
 
-function setColor(){
-	return "#00FFFF";
-	//return cookieArray[0];
+function setColor(index){
+	return colorHandling[index];
 }
