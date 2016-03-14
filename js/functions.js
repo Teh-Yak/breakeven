@@ -181,6 +181,7 @@ function enable(){
 			localStorage.setItem("costscolor", document.getElementById("costscolor").value);
 			localStorage.setItem("salesColor", document.getElementById("salesColor").value);
 			localStorage.setItem("graphHeight", document.getElementById("graphHeight").value);
+			console.log(localStorage);
 		}
 	}
 }
