@@ -83,6 +83,12 @@ $(document).ready(function(){
 		height=localStorage.getItem("graphHeight");
 		console.log(colorHandling);
 	}
+	if(colorHandling[0]===null){
+		colorHandling[0]="#FF0000"
+	}
+	if(colorHandling[1]===null){
+		colorHandling[1]="#00FF00"
+	}
 	setColor();
     	//Init materialize stuff
     	$('.modal-trigger').leanModal();
