@@ -191,6 +191,8 @@ function enable(){
 function setColor(){
 	document.getElementById("costscolor").value=colorHandling[0];
 	document.getElementById("salesColor").value=colorHandling[1];
+	console.log(document.getElementById("costscolor").value);
+	console.log(document.getElementById("salesColor").value);
 }
 
 
