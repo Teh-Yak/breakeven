@@ -76,7 +76,8 @@ function init(colours) {
 $(document).ready(function(){
 	alert("This webpage can use cookies to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience."
 	);
-	
+	setColor(0);
+	setColor(1);
     if(document.cookie!=="undefined"){
 		var cA=document.cookie.split(';');
 		for(i=0;i<cA.length;i++){
