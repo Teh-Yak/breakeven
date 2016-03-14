@@ -83,7 +83,7 @@ $(document).ready(function(){
 		height=localStorage.getItem("graphHeight");
 		console.log(colorHandling);
 	}
-	if(colorHandling[0]===null){
+	if(colorHandling[0]==null){
 		colorHandling[0]="#FF0000"
 	}
 	if(colorHandling[1]===null){
