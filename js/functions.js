@@ -41,15 +41,18 @@ function init(colours) {
     var total = 0;
     var str = "g(x)=f+v_0x";
     for(var j=0; j < all.length; j++) {
-        calculator.setExpression({id: "v"+j, latex: "v_"+j+"="+all[j][0]});
+        calculator.setExpression({id: "v"+j, latex: "v_{"+j+"}="+all[j][0]});
         if(j!=0) {
             total += all[j-1][0]*all[j][1];
             total -= all[j][0]*all[j][1];
-            calculator.setExpression({id: "p"+j, latex: "p_"+j+"="+all[j][1]});
-            str += "+(1/2)(v_"+j+"-v_"+(j-1)+")(x+abs(x-p_"+j+")-p_"+j+")";
-        } else {
-
+            calculator.setExpression({id: "p"+j, latex: "p_{"+j+"}="+all[j][1]});
+            str += "+(1/2)(v_{"+j+"}-v_{"+(j-1)+"})(x+abs(x-p_{"+j+"})-p_{"+j+"})";
         }
+        /*
+        else {
+        //Not sure what this was for...
+        }
+        */
         var _t = breakEven(f, total, all[j][0], i);
         var _t2 = (f/(i*_t)) + (all[0][0]/i);
         for(var k=1; k <= j; k++) {
