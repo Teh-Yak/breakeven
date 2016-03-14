@@ -78,7 +78,7 @@ $(document).ready(function(){
 	alert("This webpage can use cookies/local storage to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience.");
 	if(typeof "Storage" !== "undefined"){
 		colorHandling[0]=localStorage.getItem("costscolor");
-		colorHandling[1]=localStorage.getItem("salescolor");
+		colorHandling[1]=localStorage.getItem("salesColor");
 		height=localStorage.getItem("graphHeight");
 	}
     	//Init materialize stuff
@@ -179,7 +179,7 @@ function enable(){
 	else{
 		if(typeof "Storage" !== "undefined"){
 			localStorage.setItem("costscolor", document.getElementById("costscolor").value);
-			localStorage.setItem("salescolor", document.getElementById("salescolor").value);
+			localStorage.setItem("salesColor", document.getElementById("salesColor").value);
 			localStorage.setItem("graphHeight", document.getElementById("graphHeight").value);
 		}
 	}
