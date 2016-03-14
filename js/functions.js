@@ -81,6 +81,7 @@ $(document).ready(function(){
 		colorHandling[0]=localStorage.getItem("costscolor");
 		colorHandling[1]=localStorage.getItem("salesColor");
 		height=localStorage.getItem("graphHeight");
+		console.log(colorHandling);
 	}
     	//Init materialize stuff
     	$('.modal-trigger').leanModal();
