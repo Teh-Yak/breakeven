@@ -77,6 +77,7 @@ $(document).ready(function(){
 	setColor();
 	alert("This webpage can use cookies/local storage to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience.");
 	if(typeof "Storage" !== "undefined"){
+		console.log(localStorage);
 		colorHandling[0]=localStorage.getItem("costscolor");
 		colorHandling[1]=localStorage.getItem("salesColor");
 		height=localStorage.getItem("graphHeight");
