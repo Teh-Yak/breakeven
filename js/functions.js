@@ -169,7 +169,7 @@ $(document).on("change",".updateC", function() {
 /* Cookie Handling*/
 
 function enable(){
-	var label = document.getElementById(enableCooks);
+	var label = document.getElementById("enableCooks");
 	if(cookiesEnabled){
 		
 		if(typeof "Storage" !== "undefined"){
