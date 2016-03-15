@@ -169,11 +169,14 @@ $(document).on("change",".updateC", function() {
 /* Cookie Handling*/
 
 function enable(){
+	var label = document.getElementById(enableCooks);
 	if(cookiesEnabled){
+		
 		if(typeof "Storage" !== "undefined"){
 			localStorage.clear();
 		}
 		cookiesEnabled=false;
+		label.style.color="#000000";
 	}
 	else{
 		if(typeof "Storage" !== "undefined"){
@@ -182,6 +185,7 @@ function enable(){
 			localStorage.setItem("graphHeight", document.getElementById("graphHeight").value);
 		}
 		cookiesEnabled=true;
+		label.style.color="#FF0000";
 	}
 }
 
