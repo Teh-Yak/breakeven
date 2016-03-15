@@ -90,7 +90,7 @@ $(document).ready(function(){
     	calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
     	calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
     	init(colorHandling);
-
+	updateGraph();
 });
 
 $(document).on("change",".update", function() {
