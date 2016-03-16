@@ -22,6 +22,7 @@ function getTotalCosts(f, v1, v2, p, x) {
 }
 
 //Add param to sort out colours - Yak
+/* Init the graph.*/
 function init(colours) {
     //Get static fields
     var f = Number(document.getElementById("f").value);
@@ -48,11 +49,6 @@ function init(colours) {
             calculator.setExpression({id: "p"+j, latex: "p_{"+j+"}="+all[j][1]});
             str += "+(1/2)(v_{"+j+"}-v_{"+(j-1)+"})(x+abs(x-p_{"+j+"})-p_{"+j+"})";
         }
-        /*
-        else {
-        //Not sure what this was for...
-        }
-        */
         var _t = breakEven(f, total, all[j][0], i);
         var _t2 = (f/(i*_t)) + (all[0][0]/i);
         for(var k=1; k <= j; k++) {
@@ -68,28 +64,31 @@ function init(colours) {
     calculator.setExpression({id: "income", latex: "i="+i});
     calculator.setExpression({id: "costs", latex: str, color: colours[0]});
     calculator.setExpression({id: "revenue", latex: "h(x)=ix", color: colours[1]});
-	//calculator.setExpression({id: "costs", latex: str, color: "#ff0000"});
-    //calculator.setExpression({id: "revenue", latex: "h(x)=ix", color: "#00ff00"});
-    //calculator.setExpression({id: "nshade", latex: "g(x)>y>h(x)", color: "#ff0000"});
-    //calculator.setExpression({id: "pshade", latex: "g(x)<y<h(x)", color: "#00ff00"});
 }
 $(document).ready(function(){
-	
-	alert("This webpage can use cookies/local storage to store information on the preferences of the graph. This is highly experimental, subject to change but will not impact the main functioning of the page. If you do not wish to use cookies do not click the button which is labelled Enable cookies. Thank you for your patience.");
+	/* Start of Yak's Code.*/
+	//Let the user know we can store information on them, what it is and why we do it.
+	if(typeof "Storage" === "undefined"){
+		alert("This webpage can store information on your preferences for the graph. "+
+		"The information we store do not impact the main functioning of the page, nor will we ask for personal information." +
+		"If you do not wish for us to store data on you then do not click the button which is labelled 'Store Graph Settings'.");
+	}
+	//Update the values from our storage, if it is there.
 	if(typeof "Storage" !== "undefined"){
 		colorHandling[0]=localStorage.getItem("costscolor");
 		colorHandling[1]=localStorage.getItem("salesColor");
 		height=localStorage.getItem("graphHeight");
 	}
 	setValues();
-    	//Init materialize stuff
-    	$('.modal-trigger').leanModal();
-    	$(".button-collapse").sideNav();
-    	//Desmos & main code
-    	calculator = Desmos.Calculator(document.getElementById('graph'), {keypad: false, expressionsCollapsed: true, settingsMenu: false, solutions: true});
-    	calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
-    	calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
-    	init(colorHandling);
+	/* End of Yak's Code.*/
+   	//Init materialize stuff
+   	$('.modal-trigger').leanModal();
+   	$(".button-collapse").sideNav();
+   	//Desmos & main code
+   	calculator = Desmos.Calculator(document.getElementById('graph'), {keypad: false, expressionsCollapsed: true, settingsMenu: false, solutions: true});
+   	calculator.setGraphSettings({xAxisStep: 10, yAxisStep: 10});
+   	calculator.setMathBounds({left: -1000, right: 1000, bottom: -60000, top: 60000});
+   	init(colorHandling);
 	updateGraph();
 });
 
@@ -133,63 +132,71 @@ function delVar() {
 
 
 /**
- * Yaks code starts here
+ * The new part of yaks code starts here.
  */
-//colours array, 
-//0 and 1 are used for graph lines
+/* Colours array, 0 and 1 are used for graph lines. */
 var colorHandling=["#FF0000","#00FF00"];
+/* Are we using stored information?*/
 var cookiesEnabled = false;
+/* The hieght of the graph. */
 var height=200;
 
-//updates the colours array
+/* Updates the colours array. */
 function updateColors(){
 	var s=document.getElementById("costscolor").value;
 	var c=document.getElementById("salesColor").value;
 	colorHandling=[s,c]
 }
  
- /* update the graph hieght*/
+ /* Update the graph hieght. */
 function updateGraph(){
 	height = Number(document.getElementById("graphHeight").value);
 	document.getElementById("graph").style.height=height+"px";
 	calculator.resize();
 }
 
-/*when the graph height is updated...*/
+/* When the graph height is updated... */
 $(document).on("change",".updateGraph", function() {
     updateGraph();	
 });
 
-/*when the graph colours is updated...*/
+/* When the graph colours is updated... */
 $(document).on("change",".updateC", function() {
 	updateColors();
 	init(colorHandling);
 });
 
-/* Cookie Handling*/
-
+/* Information storage handling. */
 function enable(){
 	var label = document.getElementById("enableCooks");
+	//is storage enabled?
 	if(cookiesEnabled){
-		
+		//delete the information
 		if(typeof "Storage" !== "undefined"){
 			localStorage.clear();
 		}
+		//change the label and the flag
 		cookiesEnabled=false;
 		label.style.color="#000000";
+		label.innerHTML="Store Graph Settings?"
 	}
 	else{
+		//create the information
 		if(typeof "Storage" !== "undefined"){
 			localStorage.setItem("costscolor", document.getElementById("costscolor").value);
 			localStorage.setItem("salesColor", document.getElementById("salesColor").value);
 			localStorage.setItem("graphHeight", document.getElementById("graphHeight").value);
 		}
+		//change the label and the flag
 		cookiesEnabled=true;
 		label.style.color="#FF0000";
+		label.innerHTML="Remove Stored Graph Settings."
 	}
 }
 
+/* Called to set the default values of the graph settings. */
 function setValues(){
+	//If an individual setting is not there, make it default.
 	if(colorHandling[0]==null){
 		colorHandling[0]="#FF0000";
 	}
@@ -199,6 +206,7 @@ function setValues(){
 	if(height==null){
 		height="200";
 	}
+	//Set the field to be the right value.
 	document.getElementById("costscolor").value=colorHandling[0];
 	document.getElementById("salesColor").value=colorHandling[1];
 	document.getElementById("graphHeight").value=height;
