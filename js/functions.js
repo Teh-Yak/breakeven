@@ -69,10 +69,11 @@ $(document).ready(function(){
 	/* Start of Yak's Code.*/
 	//Let the user know we can store information on them, what it is and why we do it.
 	if(typeof "Storage" !== "undefined"){
-		if(localStorage.getItem("costscolor")!=null&&localStorage.getItem("salesColor")!=null&&localStorage.getItem("graphHeight")!=null)
+		if(localStorage.getItem("costscolor")!==null||localStorage.getItem("salesColor")!=null||localStorage.getItem("graphHeight")!=null)
 		alert("This webpage can store information on your preferences for the graph. "+
 		"The information we store do not impact the main functioning of the page, nor will we ask for personal information." +
-		"If you do not wish for us to store data on you then do not click the button which is labelled 'Store Graph Settings'.");
+		"If you do not wish for us to store data on you then do not click the button which is labelled 'Store Graph Settings'."+
+		"You have been warned.");
 	}
 	//Update the values from our storage, if it is there.
 	if(typeof "Storage" !== "undefined"){
