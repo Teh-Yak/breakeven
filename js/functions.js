@@ -68,7 +68,7 @@ function init(colours) {
 $(document).ready(function(){
 	/* Start of Yak's Code.*/
 	//Let the user know we can store information on them, what it is and why we do it.
-	if(typeof "Storage" !== "undefined"){
+	if(typeof "Storage" === "undefined"){
 		if(localStorage.getItem("costscolor")!==null||localStorage.getItem("salesColor")!=null||localStorage.getItem("graphHeight")!=null)
 		alert("This webpage can store information on your preferences for the graph. "+
 		"The information we store do not impact the main functioning of the page, nor will we ask for personal information." +
