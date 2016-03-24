@@ -68,7 +68,7 @@ function init(colours) {
 $(document).ready(function(){
 	/* Start of Yak's Code.*/
 	//Let the user know we can store information on them, what it is and why we do it.
-	displayWarning();
+	//displayWarning();
 	//Update the values from our storage, if it is there.
 	if(typeof "Storage" !== "undefined"){
 		colorHandling[0]=localStorage.getItem("costscolor");
